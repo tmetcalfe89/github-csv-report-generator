@@ -116,14 +116,15 @@ export default function Settings({
           <Content>
             <Form.Field>
               <Form.Label>Share this URL</Form.Label>
-              <Form.Control onClick={() => copyToClipboard(viewUrl)}>
+              <Form.Control onClick={() => url && copyToClipboard(viewUrl)}>
                 <Form.Input
                   readOnly
-                  value={viewUrl}
+                  value={!url ? "" : viewUrl}
                   color={joinStyle(
                     ctc.error && "danger",
                     ctc.value && "success"
                   )}
+                  disabled={!url}
                 />
                 <Icon align="left" size="small">
                   <i class="fa-solid fa-link"></i>

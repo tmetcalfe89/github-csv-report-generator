@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import csv from "csvtojson";
 import { parseAuto, parseCsv, parseJson } from "../util/parseFiles";
 
 export const statuses = {
@@ -7,10 +6,6 @@ export const statuses = {
   loaded: "loaded",
   errored: "errored",
 };
-
-function csvToJson(csvData) {
-  return csv().fromString(csvData);
-}
 
 const parsers = [parseAuto, parseCsv, parseJson];
 

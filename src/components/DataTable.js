@@ -1,3 +1,4 @@
+import { Progress } from "react-bulma-components";
 import useRemote, { statuses } from "../hooks/useRemote";
 import DynamicTable from "./DynamicTable";
 
@@ -6,7 +7,7 @@ function Error({ errorMessage }) {
 }
 
 function Loading() {
-  return <div>loading...</div>;
+  return <Progress />;
 }
 
 export default function DataTable({ url }) {

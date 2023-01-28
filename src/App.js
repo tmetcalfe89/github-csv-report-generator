@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Container } from "react-bulma-components";
+import { Box, Container, Heading } from "react-bulma-components";
 import { useSearchParam } from "react-use";
 import DataTable from "./components/DataTable";
 import Settings from "./components/Settings.js";
@@ -10,7 +10,9 @@ import "./style.css";
 
 function App() {
   const urlParam = useSearchParam("url");
+  const titleParam = useSearchParam("title");
   const [url, setUrl] = useState(urlParam);
+  const [title, setTitle] = useState(titleParam);
   const settingsParam = useSearchParam("settings");
   const settings = useSettings(settingsParam);
 
@@ -20,8 +22,11 @@ function App() {
         <Settings
           {...settings}
           url={url}
-          onUrlChange={(newUrl) => setUrl(newUrl)}
+          onUrlChange={setUrl}
+          title={title}
+          onTitleChange={setTitle}
         />
+        {title && <Heading>{title}</Heading>}
         <DataTable
           url={url}
           type={settings.type}

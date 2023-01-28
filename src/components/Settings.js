@@ -27,19 +27,29 @@ export default function Settings({
   settingsCode,
   url,
   onUrlChange,
+  title,
+  onTitleChange,
 }) {
   const [showSettings, toggleShowSettings] = useToggle(!url);
   const [innerUrl, setInnerUrl] = useState(url);
+  const [innerTitle, setInnerTitle] = useState(title);
   const [ctc, copyToClipboard] = useCopyToClipboard();
   const viewUrl = useMemo(
-    () => `${window.location.origin}/?url=${url}&settings=${settingsCode}`,
-    [url, settingsCode]
+    () =>
+      `${window.location.origin}/?url=${url}&settings=${settingsCode}&title=${title}`,
+    [url, settingsCode, title]
   );
 
   function handleChangeUrl(e) {
     e.preventDefault();
 
     onUrlChange(innerUrl);
+  }
+
+  function handleChangeTitle(e) {
+    e.preventDefault();
+
+    onTitleChange(innerTitle);
   }
 
   return (
@@ -63,14 +73,27 @@ export default function Settings({
             <Content>
               <Form.Field>
                 <Form.Label>
-                  Enter the URL of the data you'd like to view. Hit Enter to
-                  confirm.
+                  Enter the URL of the data you'd like to view.
                 </Form.Label>
                 <Form.Control>
                   <Form.Input
                     value={innerUrl}
                     onChange={(e) => setInnerUrl(e.target.value)}
                     color={joinStyle(innerUrl !== url && "warning")}
+                  />
+                </Form.Control>
+              </Form.Field>
+            </Content>
+          </form>
+          <form onSubmit={handleChangeTitle}>
+            <Content>
+              <Form.Field>
+                <Form.Label>Title</Form.Label>
+                <Form.Control>
+                  <Form.Input
+                    value={innerTitle}
+                    onChange={(e) => setInnerTitle(e.target.value)}
+                    color={joinStyle(innerTitle !== title && "warning")}
                   />
                 </Form.Control>
               </Form.Field>

@@ -1,10 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import csv from "csvtojson";
-
-export const types = {
-  csv: "csv",
-  json: "json",
-};
+import { parseAuto, parseCsv, parseJson } from "../util/parseFiles";
 
 export const statuses = {
   waiting: "waiting",
@@ -12,9 +7,7 @@ export const statuses = {
   errored: "errored",
 };
 
-function csvToJson(csvData) {
-  return csv().fromString(csvData);
-}
+const parsers = [parseAuto, parseCsv, parseJson];
 
 export default function useRemote(url, type) {
   const [data, setData] = useState(null);
@@ -37,10 +30,7 @@ export default function useRemote(url, type) {
           setError(responseError);
           return;
         }
-        const responseData =
-          type === types.json
-            ? await response.json()
-            : await csvToJson(await response.text());
+        const responseData = await parsers[type](await response.text());
         if (!running) return;
         setData(responseData);
       } catch (error) {

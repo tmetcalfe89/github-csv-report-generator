@@ -1,0 +1,14 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
+
+.pagination-ellipsis {
+  display: none;
+}
+
+.pagination-list {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+}
+
+.content li + li {
+  margin-top: 0;
+}

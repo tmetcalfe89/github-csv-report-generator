@@ -22,9 +22,7 @@ function InitialMessage() {
         </div>
         <div>
           If you'd like to see a demo,{" "}
-          <a
-            href={`${window.location.origin}/?url=https://raw.githubusercontent.com/tmetcalfe89/report-generator/main/demo/purchases.csv&settings=0|1&title=Purchases`}
-          >
+          <a href="/?url=https://raw.githubusercontent.com/tmetcalfe89/report-generator/main/demo/purchases.csv&settings=0|1&title=Purchases">
             click here
           </a>
           !

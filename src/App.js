@@ -22,7 +22,11 @@ function App() {
           url={url}
           onUrlChange={(newUrl) => setUrl(newUrl)}
         />
-        <DataTable url={url} type={settings.type} />
+        <DataTable
+          url={url}
+          type={settings.type}
+          headerFix={settings.headerFix}
+        />
       </Box>
     </Container>
   );

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Table } from "react-bulma-components";
 
 export default function DynamicTable({ data }) {
   const headers = useMemo(() => {
@@ -6,23 +7,25 @@ export default function DynamicTable({ data }) {
   }, [data]);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          {headers.map((header) => (
-            <th>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((entry) => (
+    <Table.Container>
+      <Table size="fullwidth" striped hoverable>
+        <thead>
           <tr>
             {headers.map((header) => (
-              <td>{entry[header]}</td>
+              <th>{header}</th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((entry) => (
+            <tr>
+              {headers.map((header) => (
+                <td>{entry[header]}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Table.Container>
   );
 }

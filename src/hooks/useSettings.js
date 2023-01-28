@@ -8,10 +8,10 @@ export const contentTypes = {
 
 export const headerFixes = {
   none: 0,
-  snakeCase: 1,
+  snake_case: 1,
   camelCase: 2,
-  screamingSnakeCase: 3,
-  kebabCase: 4,
+  SCREAMING_SNAKE_CASE: 3,
+  "kebab-case": 4,
 };
 
 function encodeSettings(type, headerFix) {

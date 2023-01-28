@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Table } from "react-bulma-components";
 
-export default function DynamicTable({ data }) {
+export default function DynamicTable({ data, headerFormatter = (e) => e }) {
   const headers = useMemo(() => {
     return [...new Set(data.flatMap((entry) => Object.keys(entry)))];
   }, [data]);
@@ -12,7 +12,7 @@ export default function DynamicTable({ data }) {
         <thead>
           <tr>
             {headers.map((header) => (
-              <th>{header}</th>
+              <th>{headerFormatter(header)}</th>
             ))}
           </tr>
         </thead>

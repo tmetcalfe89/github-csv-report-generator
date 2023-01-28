@@ -36,7 +36,9 @@ export default function Settings({
   const [ctc, copyToClipboard] = useCopyToClipboard();
   const viewUrl = useMemo(
     () =>
-      `${window.location.origin}/?url=${url}&settings=${settingsCode}&title=${title}`,
+      `${
+        window.location.href.split("?")[0]
+      }?url=${url}&settings=${settingsCode}&title=${title}`,
     [url, settingsCode, title]
   );
 

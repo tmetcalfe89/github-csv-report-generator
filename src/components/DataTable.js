@@ -10,8 +10,8 @@ function Loading() {
   return <Progress />;
 }
 
-export default function DataTable({ url }) {
-  const { data, error, status } = useRemote(url);
+export default function DataTable({ url, type }) {
+  const { data, error, status } = useRemote(url, type);
 
   switch (status) {
     case statuses.errored:
